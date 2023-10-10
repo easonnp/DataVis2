@@ -19,6 +19,9 @@
     <h1>Bubble Plot</h1>
     <div id="bubble_plot"></div>
 
+    <h1>Alluvial Diagram</h1>
+    <div id="alluvial_diagram"></div>
+
     <script type="text/javascript">   
         var vg_1 = "./choropleth_map.vg.json";
         vegaEmbed("#choropleth_map", vg_1, {"actions": false }).then(function(result) {
@@ -26,6 +29,10 @@
         
         var vg_2 = "./bubble_plot.vg.json";
         vegaEmbed("#bubble_plot", vg_2, {"actions": false }).then(function(result) {
+        }).catch(console.error);
+
+        var vg_3 = "./alluvial_diagram.vg.json";
+        vegaEmbed("#alluvial_diagram", vg_3, {"actions": false }).then(function(result) {
         }).catch(console.error);
     </script>
 </body>
