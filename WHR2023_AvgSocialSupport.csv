@@ -1,0 +1,13 @@
+Continent,Status_of_country,Avg_social_support
+Europe,Developed,0.953
+Europe,Developing,0.725
+North America,Developed,0.928
+North America,Developing,0.703
+South America,Developed,0.876
+South America,Developing,0.672
+Asia,Developed,0.693
+Asia,Developing,0.427
+Africa,Developed,0.452
+Africa,Developing,0.209
+Oceania,Developed,0.935
+Oceania,Developing,0.714
