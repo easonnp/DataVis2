@@ -128,5 +128,8 @@
                     ]
             }
         }
-    ]
+    ],
+    "config": {
+        "background": "#faf1e5"
+    }
 }

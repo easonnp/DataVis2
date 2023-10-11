@@ -97,5 +97,8 @@
         {"filter": "Continent_selection == null || datum.Continent == Continent_selection"}
       ]
     }
-  ]
+  ],
+  "config": {
+      "background":  "#faf1e5"
+  }
 }

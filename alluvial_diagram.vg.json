@@ -1,12 +1,11 @@
-{
-    "$schema": "https://vega.github.io/schema/vega/v3.json",
+{   "//citation": "Codes below are referred to https://stackoverflow.com/questions/66387154/sankey-diagram-alluvial-diagram-in-vega-lite",
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
     "height": 2000,
     "width": 1500,
-    "title": {"text": "GDP per capita (USD) by Continents and Countries"},
+    "title": {"text": "GDP per Capita (USD) by Continents and Countries"},
     "config": {
-        "title": {
-            "fontSize": 20
-        }
+        "title": {"fontSize": 20},
+        "background": "#faf1e5"
     },
     "data": [
       {

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 400,
+  "title": {"text": "Happiness Score vs Life Expectancy", "fontSize": 20},
+  "data": {
+    "url": "https://raw.githubusercontent.com/easonnp/DataVis2/main/WHR2023.csv"
+  },
+  "transform": [
+    {
+      "filter": {
+        "field": "Population",
+        "gte": 126200695
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Population",
+      "type": "quantitative",
+      "title": "Population",
+      "scale": {"domain": [0, 1700000000]}
+    },
+    "y": {
+      "field": "Country",
+      "type": "nominal",
+      "title": "Country",
+      "sort": ["China", "India", "United States of America", "Indonesia", "Pakistan", "Brazil", "Nigeria", "Bangladesh", "Russia", "Japan"]
+    }
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "highlight",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "encodings": ["y"]
+          }
+        },
+        {
+          "name": "selected_country",
+          "select": {
+            "type": "point",
+            "encodings": ["y"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "color": "darkorange"
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "Country",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "Population",
+            "type": "quantitative",
+            "title": "Population",
+            "format": ",.0f"
+          }
+        ],
+        "fillOpacity": {
+          "condition": {
+            "param": "selected_country",
+            "value": 1
+          },
+          "value": 0.3
+        },
+        "strokeWidth": {
+          "condition": [
+            {
+              "param": "selected_country",
+              "empty": false,
+              "value": 2
+            },
+            {
+              "param": "highlight",
+              "empty": false,
+              "value": 1
+            }
+          ],
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 5,
+        "fontStyle": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "Population",
+          "type": "quantitative",
+          "format": ",.0f"
+        },
+        "x": {
+          "field": "Population",
+          "type": "quantitative",
+          "title": "Population",
+          "scale": {"domain": [0, 1700000000]}
+        },
+        "y": {
+          "field": "Country",
+          "type": "nominal",
+          "title": "Country",
+          "sort": ["China", "India", "United States of America", "Indonesia", "Pakistan", "Brazil", "Nigeria", "Bangladesh", "Russia", "Japan"]
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#faf1e5"
+  }
+}
