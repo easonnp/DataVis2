@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
+    "width": 740,
     "height": 400,
     "title": {"text": "Happiness Score vs Life Expectancy", "fontSize": 20},
     "data": {
