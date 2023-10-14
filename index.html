@@ -1,80 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF -8">
+    <meta name="viewport" content ="width =device-width, initial-scale=1.0">
+    <title>Data Visualisations</title>
+
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-    <script src="./vegalite_charts.js"></script>
-    <link rel="stylesheet" type="text/css" href="./layout.css">
+    
+    <link rel="stylesheet" href="layout.css">
 </head>
+<body>
+    <header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#choropleth">Choropleth Map</a></li>
+            <li><a href="#bar">Bar Chart</a></li>
+            <li><a href="#bubble">Bubble Plot</a></li>
+            <li><a href="#dot">Connected Dot Plot</a></li>
+            <li><a href="#alluvial">Alluvial Diagram</a></li>
+        </ul>
+    </nav>
+    </header>
+    <section id="home">
+        <div class="main">
+            <h1 class="headings">WORLD'S </h1>
+            <p class="phead">HAPPINESS, GDP & Life Expectancy</p>
+            <p class="pbody">This visualisation explores which Countries in 2020 
+                have the most life satisfaction 
+                and how does this correlate to the nation's GDP per Capita 
+                and the life expectancy of the people of the nation
+            </p>
+        </div>
+    </section>
 
-<body style="background-color: #faf1e5;">
-    <h1 style="background-color: #f7ce98; font-size: 60px;">
-        Global Happiness Score 2023</h1>
-    <div class="with-descriptions" style="display: flex; margin-bottom: 20px;">
-        <img src="picture.jpg" alt="Image Description" width="800" height="450">
-        <div
-            style="background-color: #f8e1c3; width: 500px; padding: 20px; font-family: Arial, Helvetica, sans-serif; text-align: left;">
-            <div style="margin-bottom: 20px;">
-                <div><b style=" font-size: 23px;">How is the Global Happiness Score calculated?</b>
-                </div>
-                The most widely known measure of global happiness is the World Happiness Report, 
-                which uses the Cantril ladder, also known as the "life satisfaction ladder," 
-                as a primary indicator. The key components commonly considered in calculating the global 
-                happiness score for a country include Life Satisfaction, GDP per Capita, Social Support Rate,
-                Life Expectancy, Population and Freedom to Make Life Choices.
-            </div>
-            <div><b style="font-size: 23px;">How useful is the Global Happiness Score?</b></div>
-            Global happiness scores, such as those in the World Happiness Report, serve to guide
-            policy decisions, enable international comparisons, assess public health, inform development 
-            efforts, and study the relationship between well-being and economics. They have implications 
-            for academic research, corporate social responsibility, and international diplomacy. Additionally,
-            individuals use these scores to make decisions about where to live, work, or study, 
-            but it's important to remember the subjective nature of happiness and consider them 
-            alongside other indicators for a holistic well-being assessment.
+    <section id="choropleth">
+        <h2 class="heading">Happiness of Countries</h2> 
+        <div id="map">
+            <div id="choropleth_map"></div>
+            <div id="map_des">
+            <p>The <span class="hilight">Choropleth Map</span> 
+                on the left shows the <span class="hilight">Life Satisfaction</span> 
+                of the <span class="hilight">Countries</span> in the world in year <span class="hilight">2020</span>.</p>
+                <br>
+            <p>It shows that <span class="hilight">Finland</span>  
+                is the <span class="hilight">happiest</span>  country in the world, 
+                the <span class="hilight">2nd happiest</span> is followed by
+                <span class="hilight">Denmark</span> .
+            </p>
             <br>
-            <br>Source: <a href="https://worldhappiness.report/">https://worldhappiness.report/</a>
+            <p>Whereas, <span class="hilight">Afghanistan</span> is the 
+                <span class="hilight">most unhappy</span> country in the world,
+                The <span class="hilight">2nd most unhappy</span> country is 
+                <span class="hilight">Lebanon</span>.
+            </p>
+            </div>
         </div>
-    </div>
-    <div class="without-descriptions">
-        <div id="choropleth_map"></div>
-    </div>
-    <div class="with-descriptions">
-        <div id="bar_chart"></div>
-        <div class="descriptions">
-            <div style=" font-size: 20px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 10px;"><b>Top 10
-                Countries with China as the most populated country in the world</b></div>
-        The <b>top 10 countries</b> in the bar chart is visualized with
-        <b>China</b> ranking at the <b>highest</b> position. This could be due to the social and 
-        economic conditions in the early years. However, other factors such as fertility rates,
-        parental care, education and infrastructure could also influence population of countries
-        around the world.
-    </div>
-    </div>
-    <div class="with-descriptions">
-        <div>
-            <div id="bubble_plot"></div>
-        </div>
-        <div class="descriptions">
-            <div style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 10px;"><b>Happiness
-                Score affects Life Expectancy</b></div>
-            As we can see, the higher the happiness score within a country, the higher the 
-            life expectancy of its people. <b>Europe</b> shows the <b>highest</b> happiness score and 
-            life expectancy, whereas <b>Africa</b> shows the <b>least</b> happiness score and life expectancy.
-        <b>Cuba</b> takes the top spot in <b>highest</b> life expectancy of <b>78.89 years</b>, and <b>Mozambique</b> is the last
-        with lowest life expectancy of just <b>51.53 years</b>.
-        </div>
-    </div>
-    <div class="without-descriptions">
-        <div id="connected_dot_plot"></div>
-    </div>
-    <div class="without-descriptions" style="margin-bottom: 0px;">
-        <div id="alluvial_diagram"></div>
-    </div>
-</body>
+    </section>
 
+    <section id="bar">
+        <h2 class="heading">Happiness vs GDP of countries</h2>
+        <div id="bubble">
+            <div id="bubble_des">
+                <p>The <span class="hilight">Bubble Plot</span>
+                    on the right shows the relationship between the <span class="hilight">Life Satisfaction</span>
+                    and the <span class="hilight">GDP per capita</span> of the Countries in the world.
+                </p>
+                <br>
+                <p>Countries which plot in red is located in <span class="hilight">North America</span>, 
+                    plot in purple is located in <span class="hilight">South America</span>, 
+                    plot in orange is located in <span class="hilight">Europe</span>, 
+                    plot in light-blue is located in <span class="hilight">Africa</span>,
+                    plot in dark blue is located in <span class="hilight">Asia</span>, 
+                    whereas plot in brown is located in <span class="hilight">Oceania</span>.
+                </p>
+            </div>
+            <div id="bubble_plot"></div>
+        </div> 
+    </section>
+
+    <section id="bubble">
+        <h2 class="heading">Top N Countries Life Expectancy</h2>
+        <div id="bump">
+            <div id="bump_chart"></div>
+            <div id="bump_des">
+                <p>The <span class="hilight">Bump Chart</span>
+                    on the left shows the <span class="hilight">Top N</span>
+                    Countries of highest <span class="hilight">Life Expectancy</span>
+                </p>
+                <br>
+                <p>We can see that <span class="hilight">Japan</span> have a consecutive
+                    <span class="hilight">Championship</span> through these years, and 
+                    <span class="hilight">Switzerland</span>
+                    follows on its back gets the <span class="hilight">2nd</span> through these years.
+                </p>
+                <br>
+                <p><span class="hilight">Australia</span> 
+                    drops out from the <span class="hilight">Top 5</span> in the year 2014, and was replace by 
+                    <span class="hilight">Singapore</span> till Year 2020.
+
+                </p>
+            </div>
+        </div> 
+    </section>
+
+    <section id="dot">
+        <h2 class="heading">Countries Population</h2>
+        <div id="alluvial">
+            <div id="sankey_des">
+                <p>The <span class="hilight">Alluvial Diagram</span> 
+                    located at the bottom shows the <span class="hilight">Population</span> 
+                    of the <span class="hilight">Continent</span> and the 
+                    <span class="hilight">Countries</span> in the world.
+                </p>
+                <br>
+                <p>We can see that <span class="hilight">China</span> have the 
+                    <span class="hilight">No.1</span> population in the World,
+                    which tale up <span class="hilight">18.7%</span> of the 
+                    World's population.
+                    the <span class="hilight">2nd</span> is followed by
+                    <span class="hilight">India</span> which take up 
+                    <span class="hilight">17.9%</span> of the World's population
+                </p>
+            </div>
+            <div id="sankey"></div>
+        </div> 
+    </section>
+
+    <script type="text/javascript">
+    var choropleth_map = "./choropleth_map.vg.json";
+    vegaEmbed('#choropleth_map', choropleth_map, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    </script>
+
+    <script type="text/javascript">
+    var bar_chart = "./bar_chart.vg.json";
+    vegaEmbed('#bar_chart', bar_chart, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    </script>
+
+    <script type="text/javascript">
+    var bubble_plot = "./bubble_plot.vg.json";
+    vegaEmbed('#bubble_plot', bubble_plot, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    </script>
+
+    <script type="text/javascript">
+    var connected_dot_plot = "./connected_dot_plot.vg.json";
+    vegaEmbed('#connected_dot_plot', connected_dot_plot, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    </script>
+
+    <script type="text/javascript">
+    var alluvial_diagram = "./alluvial_diagram.vg.json";
+    vegaEmbed('#alluvial_diagram', alluvial_diagram, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    </script>
+
+</body>
 </html>

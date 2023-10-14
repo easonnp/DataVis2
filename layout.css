@@ -1,29 +1,215 @@
-h1 {
-    text-align: center;
-  }
-  
-  #first-row {
-    display: flex;
-  }
-  
-  .without-descriptions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 36px;
-  }
-  
-  .with-descriptions {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 36px;
-  }
-  
-  .descriptions {
-    width: 500px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
-    padding-left: 21px;
-    padding-top: 10px;
-  }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+}
+.navbar ul{
+  display:flex;
+  list-style: none;
+  margin: 20px;
+}
+.navbar ul li{
+  font-family: century;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.navbar ul li a{
+  text-decoration: none;
+  color: white;
+  padding: 8px 25px;
+  transition: all .5 ease;
+}
+.navbar ul li a:hover{
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 10px white;
+}
+
+/* Home Section */
+#home{
+  display:flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+#home::before{
+  content:"";
+  position: absolute;
+  top:0;
+  right:0;
+  background: url('picture.jpg') no-repeat center center/cover;
+  height: 500px;
+  width: 100%;
+  z-index: -1;
+  opacity: .3;
+}
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+}
+.headings{
+  font-family: century;
+  font-size: 5rem;
+  text-align: center;
+}
+.phead{
+  font-family: century;
+  font-size: 3rem;
+  margin-bottom: 120px;
+}
+.pbody{
+  font-family: century;
+  font-size: 1.5rem;
+  width:70%;
+  text-align: center;
+  padding-top: 40px;
+}
+
+/* Choropleth */
+#Choropleth{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 30px;
+  background-color: "#faf1e5";
+}
+.heading{
+  font-family: century;
+  font-size: 3rem;
+  text-align: center;
+  padding: 20px;
+}
+#map{
+  display: flex;
+}
+#choropleth_map{
+  width: 800px;
+  height: 400px;
+  margin-left: 70px;
+}
+#map_des{
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  padding: 150px;
+}
+.hilight{
+  font-size: larger;
+  font-weight: bold;
+}
+
+/* plot1: Bubble Plot */
+#plot1{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 30px;
+  background-color: "#faf1e5";
+}
+.heading{
+  font-family: century;
+  font-size: 3rem;
+  text-align: center;
+  padding: 20px;
+}
+#bubble{
+  display: flex;
+}
+#bubble_plot{
+  width: 800px;
+  height: 400px;
+  margin-right: 80px;
+  margin-bottom: 120px;
+}
+#bubble_des{
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  padding: 150px;
+}
+
+/* Bump */
+#plot2{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 30px;
+  background-color: "#faf1e5";
+}
+.heading{
+  font-family: century;
+  font-size: 3rem;
+  text-align: center;
+  padding: 40px;
+}
+#bump{
+  display: flex;
+}
+#bump_chart{
+  width: 800px;
+  height: 400px;
+  margin-left: 140px;
+}
+#bump_des{
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  padding: 180px;
+}
+.hilight{
+  font-size: larger;
+  font-weight: bold;
+}
+
+/* Sankey */
+#plot3{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: "#faf1e5";
+  padding-top: 30px;
+}
+.heading{
+  font-family: century;
+  font-size: 3rem;
+  text-align: center;
+  padding: 20px;
+}
+#alluvial{
+  display: flex;
+  flex-direction: column;
+}
+#sankey_des{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+}
+#sankey{
+  width: 1500px;
+  height: 2100px;
+  align-self: center;
+}
+.hilight{
+  font-size: larger;
+  font-weight: bold;
+}

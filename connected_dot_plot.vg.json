@@ -1,83 +1,223 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
-    "height": 300,
-    "title": {"text": "Average Social Support Rate by Continents", "fontSize": 20},
-    "data": {
-      "url": "https://raw.githubusercontent.com/easonnp/DataVis2/main/WHR2023_AvgSocialSupport.csv"
-    },
-    "transform": [
-      {
-        "filter": {
-          "field": "Continent",
-          "oneOf": ["Europe", "Oceania", "North America", "South America", "Asia", "Africa"]
-        }
-      },
-      {
-        "filter": {
-          "field": "Status_of_country",
-          "oneOf": ["Developed", "Developing"]
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width":800,
+  "height": 300,
+  "title": {"text": "Average Social Support Rate of Developed and Developing Countries by Continents", "fontSize": 20},
+  "data": {
+    "url": "https://raw.githubusercontent.com/easonnp/DataVis2/main/WHR2023_AvgSocialSupport.csv"
+  },
+  "params": [
+    {
+      "name": "Status_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "Developed", "Developing"],
+        "labels":["Show All", "Developed", "Developing"],
+        "name": "Status of Country: "
       }
-    ],
-    "encoding": {
-      "x": {
-        "field": "Avg_social_support",
-        "type": "quantitative",
-        "title": "Average Social Support Rate"
-      },
-      "y": {
+    }
+  ],
+  "transform": [
+    {
+      "filter": {
         "field": "Continent",
-        "type": "nominal",
-        "title": "Continent",
-        "axis": {
-          "offset": 5,
-          "ticks": false,
-          "minExtent": 70,
-          "domain": false
-        },
-        "sort": ["Europe", "Oceania", "North America", "South America", "Asia", "Africa"]
+        "oneOf": ["Europe", "Oceania", "North America", "South America", "Asia", "Africa"]
       }
     },
-    "layer": [
-      {
-        "mark": "line",
-        "encoding": {
-          "detail": {
-            "field": "Continent",
-            "type": "nominal"
-          },
-          "color": {"value": "#C0C0C0"},
-          "size": {"value": 13}
-        }
+    {
+      "filter": {
+        "field": "Status_of_country",
+        "oneOf": ["Developed", "Developing"]
+      }
+    },
+    {"filter": "Status_selection == null || datum.Status_of_country == Status_selection"}
+  ],
+  "encoding": {
+    "x": {"field": "Avg_social_support", "type": "quantitative", "title": "Average Social Support Rate"},
+    "y": {
+      "field": "Continent",
+      "type": "nominal",
+      "title": "Continent",
+      "axis": {"offset": 5, "ticks": false, "minExtent": 70, "domain": false},
+      "sort": ["Europe", "Oceania", "North America", "South America", "Asia", "Africa"]
+    }
+  },
+  "layer": [
+    {"mark": "line", "encoding": {"detail": {"field": "Continent", "type": "nominal"}, "color": {"value": "#C0C0C0"}, "size": {"value": 13}}},
+    {
+      "mark": {
+        "type": "point",
+        "filled": true
       },
-      {
-        "mark": {
-          "type": "point",
-          "filled": true
-        },
-        "encoding": {
-          "color": {
-            "field": "Status_of_country",
-            "type": "nominal",
-            "scale": {
-              "domain": ["Developed", "Developing"],
-              "range": ["#e6959c", "#911a24"]
-            },
-            "title": "Status of Country"
+      "encoding": {
+        "color": {
+          "field": "Status_of_country",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Developed", "Developing"],
+            "range": ["#e6959c", "#911a24"]
           },
-          "size": {"value": 200},
-          "opacity": {"value": 1},
-          "tooltip": [
-            {"field": "Continent", "type": "nominal"},
-            {"field": "Status_of_country", "type": "nominal", "title": "Status of Country"},
-            {"field": "Avg_social_support", "title": "Average Social Support Rate", "type": "quantitative", "format": ","}
-            ]
+          "title": "Status of Country"
+        },
+        "size": {"value": 200},
+        "opacity": {"value": 1},
+        "tooltip": [
+          {"field": "Continent", "type": "nominal"},
+          {"field": "Status_of_country", "type": "nominal", "title": "Status of Country"},
+          {"field": "Avg_social_support", "title": "Average Social Support Rate", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": -140,
+        "dy": 230,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "Gap of Average Social Support Rate for"},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Status_selection == null || datum.Status_of_country == Status_selection",
+            "value": 0.15
+          },
+          "value": 0.05
         }
       }
-    ],
-    "config": {
-      "background": "#faf1e5"
-  }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": -140,
+        "dy": 245,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "Developed and Developing countries in"},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Status_selection == null || datum.Status_of_country == Status_selection",
+            "value": 0.15
+          },
+          "value": 0.05
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": -140,
+        "dy": 260,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "Asia is the largest among all (0.693 and 0.427)."},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Status_selection == null || datum.Status_of_country == Status_selection",
+            "value": 0.15
+          },
+          "value": 0.05
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": 50,
+        "dy": 70,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "Developed countries have a higher average"},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Status_selection == null || datum.Status_of_country == Status_selection",
+            "value": 0.15
+          },
+          "value": 0.05
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": 50,
+        "dy": 85,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "social support rate than Developing countries"},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Status_selection == null || datum.Status_of_country == Status_selection",
+            "value": 0.15
+          },
+          "value": 0.05
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": 50,
+        "dy": 100,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "in all continents."},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Status_selection == null || datum.Status_of_country == Status_selection",
+            "value": 0.15
+          },
+          "value": 0.05
+        }
+      }
+    }
+  ],
+  "config": {"background": "#faf1e5"}
 }
-  

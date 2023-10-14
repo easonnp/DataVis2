@@ -1,18 +1,30 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 740,
+  "width": 650,
   "height": 400,
   "title": {"text": "Total Population by Countries", "fontSize": 20},
   "data": {
     "url": "https://raw.githubusercontent.com/easonnp/DataVis2/main/WHR2023.csv"
   },
+  "params": [
+    {
+        "name": "Country_selection",
+        "bind": {
+            "input": "select",
+            "options": [null, "Bangladesh", "Brazil", "China", "India", "Indonesia", "Japan", "Nigeria", "Pakistan", "Russia", "United States of America"],
+            "labels":["Show All", "Bangladesh", "Brazil", "China", "India", "Indonesia", "Japan", "Nigeria", "Pakistan", "Russia", "United States of America"],
+            "name": "Country Selection: "
+        }
+    }
+  ],
   "transform": [
     {
       "filter": {
         "field": "Population",
         "gte": 126200695
       }
-    }
+    },
+    {"filter": "Country_selection == null || datum.Country == Country_selection"}
   ],
   "encoding": {
     "x": {
@@ -26,6 +38,15 @@
       "type": "nominal",
       "title": "Country",
       "sort": ["China", "India", "United States of America", "Indonesia", "Pakistan", "Brazil", "Nigeria", "Bangladesh", "Russia", "Japan"]
+    },
+    "color": {
+      "field": "Country",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Bangladesh", "Brazil", "China", "India", "Indonesia", "Japan", "Nigeria", "Pakistan", "Russia", "United States of America"],
+        "range": ["#d62728", "#1f77b4", "#d07033", "#2990a6", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#33b2d0", "#ff7f0e"]
+      },
+      "legend": {"title": "Country"}
     }
   },
   "layer": [
@@ -35,7 +56,7 @@
           "name": "highlight",
           "select": {
             "type": "point",
-            "on": "pointerover",
+            "on": "mouseover",
             "encodings": ["y"]
           }
         },
@@ -49,44 +70,14 @@
       ],
       "mark": {
         "type": "bar",
-        "color": "darkorange"
+        "strokeWidth": 0
       },
       "encoding": {
         "tooltip": [
-          {
-            "field": "Country",
-            "type": "nominal",
-            "title": "Country"
-          },
-          {
-            "field": "Population",
-            "type": "quantitative",
-            "title": "Population",
-            "format": ",.0f"
-          }
-        ],
-        "fillOpacity": {
-          "condition": {
-            "param": "selected_country",
-            "value": 1
-          },
-          "value": 0.3
-        },
-        "strokeWidth": {
-          "condition": [
-            {
-              "param": "selected_country",
-              "empty": false,
-              "value": 2
-            },
-            {
-              "param": "highlight",
-              "empty": false,
-              "value": 1
-            }
-          ],
-          "value": 0
-        }
+          {"field": "Country", "type": "nominal", "title": "Country"},
+          {"field": "Continent", "type": "nominal", "title": "Continent"},
+          {"field": "Population", "type": "quantitative", "title": "Population", "format": ",.0f"}
+        ]
       }
     },
     {
@@ -98,27 +89,162 @@
         "fontStyle": "bold"
       },
       "encoding": {
-        "text": {
-          "field": "Population",
-          "type": "quantitative",
-          "format": ",.0f"
-        },
-        "x": {
-          "field": "Population",
-          "type": "quantitative",
-          "title": "Population",
-          "scale": {"domain": [0, 1700000000]}
-        },
-        "y": {
-          "field": "Country",
-          "type": "nominal",
-          "title": "Country",
-          "sort": ["China", "India", "United States of America", "Indonesia", "Pakistan", "Brazil", "Nigeria", "Bangladesh", "Russia", "Japan"]
+        "text": {"field": "Population", "type": "quantitative", "format": ",.0f"},
+        "x": {"field": "Population", "type": "quantitative", "title": "Population", "scale": {"domain": [0, 1700000000]}},
+        "y": {"field": "Country", "type": "nominal", "title": "Country", 
+        "sort": ["China", "India", "United States of America", "Indonesia", "Pakistan", "Brazil", "Nigeria", "Bangladesh", "Russia", "Japan"]}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": 70,
+        "dy": 125,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "China and India dominate the global's"},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Country_selection == null",
+            "value": 0.5
+          },
+          "value": 0.6
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": 70,
+        "dy": 140,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "population with a combination of over 35% of"},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Country_selection == null",
+            "value": 0.5
+          },
+          "value": 0.6
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": 70,
+        "dy": 155,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "the total global's population."},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Country_selection == null",
+            "value": 0.5
+          },
+          "value": 0.6
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": 10,
+        "dy": 300,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "Most of the Top 10 populated"},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Country_selection == null",
+            "value": 0.5
+          },
+          "value": 0.6
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": 10,
+        "dy": 315,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "countries reside in Asia continent"},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Country_selection == null",
+            "value": 0.5
+          },
+          "value": 0.6
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "black",
+        "fontStyle": "italic",
+        "fontSize": 13,
+        "dx": 10,
+        "dy": 330,
+        "xOffset": 30,
+        "yOffset": -70,
+        "align": "center"
+      },
+      "encoding": {
+        "text": {"value": "(7 out of 10 countries)."},
+        "x": {"value": 300},
+        "y": {"value": 50},
+        "opacity": {
+          "condition": {
+            "test": "Country_selection == null",
+            "value": 0.5
+          },
+          "value": 0.6
         }
       }
     }
   ],
-  "config": {
-    "background": "#faf1e5"
-  }
+  "config": {"background": "#faf1e5"}
 }

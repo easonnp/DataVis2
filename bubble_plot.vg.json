@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 740,
+    "width": 800,
     "height": 400,
     "title": {"text": "Happiness Score vs Life Expectancy", "fontSize": 20},
     "data": {
@@ -114,7 +114,7 @@
                 "color": {"value": "black"},
                 "opacity": { 
                     "condition": {
-                        "test": "datum['Country'] == 'Oman' || datum['Country'] == 'Mozambique' || datum['Country'] == 'Finland' || datum['Country'] == 'India' || datum['Country'] == 'Syria' || datum['Country'] == 'United States of America' || datum['Country'] == 'Mongolia' || datum['Country'] == 'Lebanon'",
+                        "test": "datum['Country'] == 'Oman' || datum['Country'] == 'Mozambique' || datum['Country'] == 'Finland' || datum['Country'] == 'India' || datum['Country'] == 'Syria' || datum['Country'] == 'United States of America' || datum['Country'] == 'Mongolia' || datum['Country'] == 'Lebanon' || datum['Country'] == 'Cuba' || datum['Country'] == 'Afghanistan'",
                         "value": 1
                     },
                     "value": 0
@@ -127,7 +127,182 @@
                     {"field": "Population", "type": "quantitative", "format": ","}
                     ]
             }
-        }
+        },
+        {
+            "mark": {
+              "type": "text",
+              "color": "black",
+              "fontStyle": "italic",
+              "fontSize": 13,
+              "dx": 250,
+              "dy": 350,
+              "xOffset": 30,
+              "yOffset": -70,
+              "align": "center"
+            },
+            "encoding": {
+              "text": {"value": "There is a positive correlation between happiness"},
+              "x": {"value": 300},
+              "y": {"value": 50},
+              "opacity": {
+                "condition": {
+                  "test": "Continent_selection == null || datum.Continent == Continent_selection",
+                  "value": 0.02
+                },
+                "value": 0.05
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "color": "black",
+              "fontStyle": "italic",
+              "fontSize": 13,
+              "dx": 250,
+              "dy": 365,
+              "xOffset": 30,
+              "yOffset": -70,
+              "align": "center"
+            },
+            "encoding": {
+              "text": {"value": "score and life expectancy. Countries with higher"},
+              "x": {"value": 300},
+              "y": {"value": 50},
+              "opacity": {
+                "condition": {
+                  "test": "Continent_selection == null || datum.Continent == Continent_selection",
+                  "value": 0.02
+                },
+                "value": 0.05
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "color": "black",
+              "fontStyle": "italic",
+              "fontSize": 13,
+              "dx": 250,
+              "dy": 380,
+              "xOffset": 30,
+              "yOffset": -70,
+              "align": "center"
+            },
+            "encoding": {
+              "text": {"value": "happiness score will have a higher life expectancy."},
+              "x": {"value": 300},
+              "y": {"value": 50},
+              "opacity": {
+                "condition": {
+                  "test": "Continent_selection == null || datum.Continent == Continent_selection",
+                  "value": 0.02
+                },
+                "value": 0.05
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "color": "black",
+              "fontStyle": "italic",
+              "fontSize": 13,
+              "dx": -160,
+              "dy": 50,
+              "xOffset": 30,
+              "yOffset": -70,
+              "align": "center"
+            },
+            "encoding": {
+              "text": {"value": "Finland has the highest happiness score,"},
+              "x": {"value": 300},
+              "y": {"value": 50},
+              "opacity": {
+                "condition": {
+                  "test": "Continent_selection == null || datum.Continent == Continent_selection",
+                  "value": 0.02
+                },
+                "value": 0.05
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "color": "black",
+              "fontStyle": "italic",
+              "fontSize": 13,
+              "dx": -160,
+              "dy": 65,
+              "xOffset": 30,
+              "yOffset": -70,
+              "align": "center"
+            },
+            "encoding": {
+              "text": {"value": "whereas Afghanistan has the lowest."},
+              "x": {"value": 300},
+              "y": {"value": 50},
+              "opacity": {
+                "condition": {
+                  "test": "Continent_selection == null || datum.Continent == Continent_selection",
+                  "value": 0.02
+                },
+                "value": 0.05
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "color": "black",
+              "fontStyle": "italic",
+              "fontSize": 13,
+              "dx": -160,
+              "dy": 80,
+              "xOffset": 30,
+              "yOffset": -70,
+              "align": "center"
+            },
+            "encoding": {
+              "text": {"value": "Besides, Cuba has the highest life expectancy"},
+              "x": {"value": 300},
+              "y": {"value": 50},
+              "opacity": {
+                "condition": {
+                  "test": "Continent_selection == null || datum.Continent == Continent_selection",
+                  "value": 0.02
+                },
+                "value": 0.05
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "color": "black",
+              "fontStyle": "italic",
+              "fontSize": 13,
+              "dx": -160,
+              "dy": 95,
+              "xOffset": 30,
+              "yOffset": -70,
+              "align": "center"
+            },
+            "encoding": {
+              "text": {"value": "whereas Mozambique has the lowest."},
+              "x": {"value": 300},
+              "y": {"value": 50},
+              "opacity": {
+                "condition": {
+                  "test": "Continent_selection == null || datum.Continent == Continent_selection",
+                  "value": 0.02
+                },
+                "value": 0.05
+              }
+            }
+          }
     ],
     "config": {
         "background": "#faf1e5"
