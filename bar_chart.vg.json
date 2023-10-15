@@ -1,8 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 650,
+  "width": 620,
   "height": 400,
-  "title": {"text": "Total Population by Countries", "fontSize": 20},
   "data": {
     "url": "https://raw.githubusercontent.com/easonnp/DataVis2/main/WHR2023.csv"
   },
@@ -246,5 +245,5 @@
       }
     }
   ],
-  "config": {"background": "#faf1e5"}
+  "config": {"background": "rgb(250, 241, 229)"}
 }

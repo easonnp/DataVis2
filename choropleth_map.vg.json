@@ -163,6 +163,6 @@
     }
   ],
   "config": {
-    "background":  "#faf1e5"
+    "background": "rgb(228, 212, 193)"
   }
 }

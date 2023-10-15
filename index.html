@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF -8">
+    <meta name="viewport" content ="width =device-width, initial-scale=1.0">
+    <title>Data Visualisation</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+    <header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#choropleth">Choropleth Map</a></li>
+            <li><a href="#bar">Bar Chart</a></li>
+            <li><a href="#bubble">Bubble Plot</a></li>
+            <li><a href="#dot">Connected Dot Plot</a></li>
+            <li><a href="#alluvial">Alluvial Diagram</a></li>
+        </ul>
+    </nav>
+    </header>
+    <section id="home">
+        <div class="main">
+            <h1 class="headings">GLOBAL'S</h1>
+            <p class="phead">Happiness Report 2023</p>
+            <p class="pbody">The <span class="hilight">World Happiness Report</span> is the most widely-known indicatior,
+                which uses the Cantril ladder, also known as the "life satisfaction ladder," 
+                as a primary indicator. The key components commonly considered in calculating the global 
+                happiness score for a country include <span class="hilight">Life Satisfaction, GDP per Capita, Social Support Rate,
+                Life Expectancy, Population</span> and <span class="hilight">Freedom to Make Life Choices</span>.
+            <br>
+            <br>
+            <br><i>Source: https://worldhappiness.report/</i>
+            </p>
+        </div>
+    </section>
+
+    <section id="choropleth">
+        <h2 class="heading">Happiness Score by Countries and Continents</h2> 
+        <div id="map">
+            <div id="choropleth_map"></div>
+            <div id="map_des">
+            <p>The<span class="hilight">happiness score</span> is the main indicator to assess how happy a country is.
+               It is a score out of <span class="hilight">10</span>, with <span class="hilight">1</span> represents 
+               the happiest and <span class="hilight">0</span> represents the unhappiest.
+            <br>
+            <br>
+            <p><span class="hilight">Finland</span>  
+                is the <span class="hilight">happiest</span> country in the world, followed by
+                <span class="hilight">Denmark</span>.
+            </p>
+            <br>
+            <p>However, <span class="hilight">Afghanistan</span> is the 
+                <span class="hilight">unhappiest</span> country in the world,
+                followed by <span class="hilight">Lebanon</span>.
+            </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="bar">
+        <h2 class="heading">Total Population by Countries</h2>
+        <div id="barr">
+            <div id="bar_des">
+                <p> The <span class="hilight">number of population</span> for each country has an effect on the <span class="hilight">happiness score</span> 
+                    of a country. For instance, a larger population can strain resources and potentially foster competition 
+                    and inequality, leading to diminished happiness. Rapid population growth without 
+                    corresponding economic development may also burden employment opportunities, 
+                    thus impacting happiness score.
+                </p>
+                <br>
+                <p>The <span class="hilight">Top 10
+                    countries</span> in the bar chart is visualized with <span class="hilight">China</span> ranked at the
+                    highest position and most populated. This could be due to the social and economic conditions in the
+                    early years. However, other factors such as <span class="hilight">fertility rates, parental care, education
+                    and infrastructure</span> could also influence population of countries around the world.
+                </p>
+            </div>
+            <div id="bar_chart"></div>
+        </div> 
+    </section>
+
+    <section id="bubble">
+        <h2 class="heading">Happiness Score vs Life Expectancy</h2>
+        <div id="bubblee">
+            <div id="bubble_plot"></div>
+            <div id="bubble_des">
+                <p>The <span class="hilight">happiness score</span> of a country definitely affects its <span class="hilight">life expectancy</span> 
+                    of the country. This could be explained as higher levels of happiness within a society 
+                    often correspond to better mental and physical health, leading to 
+                    healthier lifestyle choices and reduced stress levels. Individuals in happier communities 
+                    are more likely to adopt positive behaviors, such as <span class="hilight">regular exercise, balanced diets,</span> 
+                    and <span class="hilight">social engagement</span>, which can contribute to improved overall health and longevity.
+                </p>
+                <br>
+                <p><span class="hilight">Europe</span> shows the <span class="hilight">highest</span> happiness score and 
+                    life expectancy, whereas <span class="hilight">Africa</span> shows the <span class="hilight">least</span> happiness score and life expectancy.
+                    <span class="hilight">Cuba</span> takes the top spot in highest life expectancy of <span class="hilight">78.89 years</span>, and <span class="hilight">Mozambique</span> is the last
+                with lowest life expectancy of just <span class="hilight">51.53 years</span>.
+                </p>
+            </div>
+        </div> 
+    </section>
+
+    <section id="dot">
+        <h2 class="heading">Average Social Support Rate of Developed and Developing Countries by Continents</h2>
+        <div id="dott">
+            <div id="connected_dot_plot_des">
+                <p>The <span class="hilight">average social support rate</span> which measures the perceived availability of help from family, friends, 
+                    or other social networks, significantly influences the <span class="hilight">happiness score</span> of a country as individuals feel 
+                    more secure, valued, and understood within their communities with a plenty of support.  Understanding and nurturing strong social support 
+                    networks are crucial for fostering a happier and more resilient society.
+                </p>
+                <br>
+                <p>It is a score 
+                    out of <span class="hilight">1</span>, with <span class="hilight">1.0</span> represents 
+                    the most support received and <span class="hilight">0.0</span> represents the no support received.
+                </p>
+            </div>
+            <div id="connected_dot_plot"></div>
+        </div> 
+    </section>
+
+    <section id="alluvial">
+        <h2 class="heading">GDP per Capita (USD) by Countries and Continents</h2>
+        <div id="alluviall">
+            <div id="alluvial_des">
+                <p>The relationship between a country's <span class="hilight">GDP per capita</span> 
+                    and its <span class="hilight">happiness score</span> is nuanced. A higher <span class="hilight">GDP per capita</span> 
+                    generally correlates with increased access to material goods, better healthcare, and 
+                    improved living standards, thus providing a <span class="hilight">happier</span> environment to live in.
+                </p>
+                <br>
+                <br>
+                <p><i>Note: Filters on the <span class="hilight">continents</span> and <span class="hilight">countries</span> could be done by directly clicking onto them</i>.
+                </p>
+            </div>
+            <div id="alluvial_diagram"></div>
+        </div> 
+    </section>
+
+    <script type="text/javascript">
+    var choropleth_map = "./choropleth_map.vg.json";
+    vegaEmbed('#choropleth_map', choropleth_map, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    </script>
+
+    <script type="text/javascript">
+    var bar_chart = "./bar_chart.vg.json";
+    vegaEmbed('#bar_chart', bar_chart, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    </script>
+
+    <script type="text/javascript">
+    var bubble_plot = "./bubble_plot.vg.json";
+    vegaEmbed('#bubble_plot', bubble_plot, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    </script>
+
+    <script type="text/javascript">
+    var connected_dot_plot = "./connected_dot_plot.vg.json";
+    vegaEmbed('#connected_dot_plot', connected_dot_plot, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    </script>
+
+    <script type="text/javascript">
+    var alluvial_diagram = "./alluvial_diagram.vg.json";
+    vegaEmbed('#alluvial_diagram', alluvial_diagram, { "actions": false }).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    </script>
+
+</body>
+</html>
